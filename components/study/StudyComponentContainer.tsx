@@ -3,7 +3,7 @@ import { withObservables } from "@nozbe/watermelondb/react";
 import dayjs from "dayjs";
 
 import { useStudy } from "../../contexts/studyContext";
-import { vocabulary } from "../../data/vocabulary";
+import { vocabulary } from "../../data/level";
 import Study from "../../model/Study";
 import { supermemo, SuperMemoGrade } from "../../utils/supermemo";
 import Completed from "../Completed";

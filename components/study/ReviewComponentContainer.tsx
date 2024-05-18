@@ -2,7 +2,7 @@ import { useState } from "react";
 import dayjs from "dayjs";
 
 import { useStudy } from "../../contexts/studyContext";
-import { vocabulary } from "../../data/vocabulary";
+import { vocabulary } from "../../data/level";
 import { useAskReview } from "../../hooks/useAskReview";
 import Review from "../../model/Review";
 import { supermemo, SuperMemoGrade } from "../../utils/supermemo";

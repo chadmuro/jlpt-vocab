@@ -3,7 +3,7 @@ import { Q } from "@nozbe/watermelondb";
 import { useDatabase } from "@nozbe/watermelondb/react";
 import dayjs from "dayjs";
 
-import { vocabulary } from "../data/vocabulary";
+import { vocabulary } from "../data/level";
 import Log from "../model/Log";
 import Review from "../model/Review";
 import Study from "../model/Study";

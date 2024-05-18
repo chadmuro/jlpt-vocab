@@ -7,7 +7,7 @@ import TitleWithBack from "../../../components/common/BackButtonTitle";
 import Search from "../../../components/common/Search";
 import { MyStack } from "../../../components/MyStack";
 import { SafeAreaView } from "../../../components/SafeAreaView";
-import { vocabulary } from "../../../data/vocabulary";
+import { vocabulary } from "../../../data/level";
 import { formatJapanese } from "../../../utils/formatJapanese";
 
 export default function Vocabulary() {

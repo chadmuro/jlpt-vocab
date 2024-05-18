@@ -26,18 +26,6 @@ export default function Search() {
         >
           Vocabulary
         </Button>
-        <Button
-          size="$6"
-          onPress={() => handlePress("search/grammar_list")}
-        >
-          Grammar
-        </Button>
-        <Button
-          size="$6"
-          onPress={() => handlePress("search/kanji_list")}
-        >
-          Kanji
-        </Button>
       </MyStack>
     </SafeAreaView>
   );

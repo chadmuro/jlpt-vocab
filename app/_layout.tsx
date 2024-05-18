@@ -16,8 +16,6 @@ import { SplashScreen, Tabs } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { TamaguiProvider, Text, Theme } from "tamagui";
 
-import { GrammarProvider, useGrammar } from "../contexts/grammarContext";
-import { KanjiProvider, useKanji } from "../contexts/kanjiContext";
 import { LogsProvider, useLogs } from "../contexts/logContext";
 import { SettingsProvider, useSettings } from "../contexts/settingsContext";
 import { StudyProvider, useStudy } from "../contexts/studyContext";
@@ -40,15 +38,11 @@ export default function Layout() {
       <Suspense fallback={<Text>Loading...</Text>}>
         <DatabaseProvider database={databaseProvider}>
           <StudyProvider>
-            <GrammarProvider>
-              <KanjiProvider>
-                <SettingsProvider>
-                  <LogsProvider>
-                    <ThemeLayoutWrapper />
-                  </LogsProvider>
-                </SettingsProvider>
-              </KanjiProvider>
-            </GrammarProvider>
+            <SettingsProvider>
+              <LogsProvider>
+                <ThemeLayoutWrapper />
+              </LogsProvider>
+            </SettingsProvider>
           </StudyProvider>
         </DatabaseProvider>
       </Suspense>
@@ -59,8 +53,6 @@ export default function Layout() {
 function ThemeLayoutWrapper() {
   const { settings, getSettings } = useSettings();
   const { getTodaysReview, getTodaysStudy } = useStudy();
-  const { getTodaysGrammarReview, getTodaysGrammarStudy } = useGrammar();
-  const { getTodaysKanjiReview, getTodaysKanjiStudy } = useKanji();
   const { getLogs } = useLogs();
 
   const database = useDatabase();
@@ -70,10 +62,6 @@ function ThemeLayoutWrapper() {
       await getSettings();
       await getTodaysReview();
       await getTodaysStudy();
-      await getTodaysGrammarReview();
-      await getTodaysGrammarStudy();
-      await getTodaysKanjiReview();
-      await getTodaysKanjiStudy();
       await getLogs();
 
       if (!settings) {
