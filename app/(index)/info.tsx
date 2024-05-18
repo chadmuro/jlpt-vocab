@@ -4,6 +4,7 @@ import { Button, H2, Separator, Text } from "tamagui";
 
 import { MyStack } from "../../components/MyStack";
 import { useSettings } from "../../contexts/settingsContext";
+import { title, vocabulary } from "../../data/level";
 
 export default function Info() {
   const navigation = useNavigation("/(index)");
@@ -21,22 +22,14 @@ export default function Info() {
 
   return (
     <MyStack>
-      <H2 textAlign="center">Welcome to JLPT N2 Study 🇯🇵</H2>
+      <H2 textAlign="center">{`Welcome to JLPT ${title} Vocabulary Study 🇯🇵`}</H2>
       <Separator
         alignSelf="stretch"
         marginVertical={10}
       />
       <Text fontSize={16}>
-        The vocabulary list includes 2273 words for the JLPT N2 exam. You will
-        study 20 new cards per day along with review cards.
-      </Text>
-      <Text fontSize={16}>
-        The grammar list includes 138 grammar points for the JLPT N2 exam. You
-        will study 4 new cards per day along with review cards.
-      </Text>
-      <Text fontSize={16}>
-        The kanji list includes 367 kanji for the JLPT N2 exam. You will study 8
-        new cards per day along with review cards.
+        {`The vocabulary list includes ${vocabulary.length} words for the JLPT ${title} exam. You will
+        study 20 new cards per day along with review cards.`}
       </Text>
       <Text fontSize={16}>
         This application uses the supermemo spaced repetition algorithm.

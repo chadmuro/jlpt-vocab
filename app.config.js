@@ -13,7 +13,13 @@ export default {
       resizeMode: "contain"
     },
     icon: "./assets/icon.png",
-    name: IS_N1_APP ? "JLPT N1 Vocab" : "JLPT N2 Vocab",
+    name: IS_N2_APP
+      ? "JLPT N2 Vocab"
+      : IS_N3_APP
+      ? "JLPT N3 Vocab"
+      : IS_N4_APP
+      ? "JLPT N4 Vocab"
+      : "JLPT N1 Vocab",
     slug: "jlpt-vocab",
     version: "1.0.0",
     plugins: [
@@ -31,9 +37,13 @@ export default {
     },
     orientation: "portrait",
     ios: {
-      bundleIdentifier: IS_N1_APP
-        ? "com.chadmuro.jlptvocab.n1"
-        : "com.chadmuro.jlptvocab",
+      bundleIdentifier: IS_N2_APP
+        ? "com.chadmuro.jlptvocab.n2"
+        : IS_N3_APP
+        ? "com.chadmuro.jlptvocab.n3"
+        : IS_N4_APP
+        ? "com.chadmuro.jlptvocab.n4"
+        : "com.chadmuro.jlptvocab.n1",
       buildNumber: "1",
       supportsTablet: false,
       privacyManifests: {
