@@ -5,6 +5,7 @@ import { useRouter } from "expo-router";
 import { Button, Circle, ScrollView, Text, View } from "tamagui";
 
 import { useStudy } from "../contexts/studyContext";
+import { color } from "../data/level";
 import Settings from "../model/Settings";
 
 const enhance = withObservables(["settings"], ({ settings }) => ({
@@ -51,7 +52,7 @@ const TopButtons = ({ settings, totalVocabularyCount }: Props) => {
       space="$true"
       refreshControl={
         <RefreshControl
-          tintColor="red"
+          tintColor={color}
           refreshing={refreshing}
           onRefresh={onRefresh}
         />
@@ -70,7 +71,7 @@ const TopButtons = ({ settings, totalVocabularyCount }: Props) => {
               position="absolute"
               right={10}
               top={10}
-              backgroundColor="red"
+              backgroundColor={color}
               display="flex"
               size="$4"
               justifyContent="center"

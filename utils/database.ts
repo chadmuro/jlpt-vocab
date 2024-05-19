@@ -1,12 +1,6 @@
 import { Database } from "@nozbe/watermelondb";
 import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
 
-import GrammarLog from "../model/GrammarLog";
-import GrammarReview from "../model/GrammarReview";
-import GrammarStudy from "../model/GrammarStudy";
-import KanjiLog from "../model/KanjiLog";
-import KanjiReview from "../model/KanjiReview";
-import KanjiStudy from "../model/KanjiStudy";
 import Log from "../model/Log";
 import migrations from "../model/migrations";
 import Review from "../model/Review";
@@ -32,18 +26,7 @@ const adapter = new SQLiteAdapter({
 // Then, make a Watermelon database from it!
 const database = new Database({
   adapter,
-  modelClasses: [
-    Review,
-    Study,
-    Settings,
-    Log,
-    GrammarStudy,
-    GrammarReview,
-    GrammarLog,
-    KanjiStudy,
-    KanjiReview,
-    KanjiLog
-  ]
+  modelClasses: [Review, Study, Settings, Log]
 });
 
 export default database;

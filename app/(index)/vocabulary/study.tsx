@@ -7,7 +7,7 @@ import { useStudy } from "../../../contexts/studyContext";
 
 export default function Study() {
   const { study, updating } = useStudy();
-
+  console.log(study);
   return (
     <SafeAreaView>
       <MyStack>

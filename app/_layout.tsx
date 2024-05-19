@@ -19,6 +19,7 @@ import { TamaguiProvider, Text, Theme } from "tamagui";
 import { LogsProvider, useLogs } from "../contexts/logContext";
 import { SettingsProvider, useSettings } from "../contexts/settingsContext";
 import { StudyProvider, useStudy } from "../contexts/studyContext";
+import { color } from "../data/level";
 import SettingsModel from "../model/Settings";
 import config from "../tamagui.config";
 import databaseProvider from "../utils/database";
@@ -124,7 +125,7 @@ function ThemeLayout({ settings }: { settings: SettingsModel }) {
         <Tabs
           screenOptions={{
             headerShown: false,
-            tabBarActiveTintColor: "red"
+            tabBarActiveTintColor: color
           }}
         >
           <Tabs.Screen
@@ -132,7 +133,7 @@ function ThemeLayout({ settings }: { settings: SettingsModel }) {
             options={{
               title: "Study",
               tabBarIcon: ({ focused }) => (
-                <Edit3 color={focused ? "red" : "$color"} />
+                <Edit3 color={focused ? color : "$color"} />
               )
             }}
           />
@@ -141,7 +142,7 @@ function ThemeLayout({ settings }: { settings: SettingsModel }) {
             options={{
               title: "Search",
               tabBarIcon: ({ focused }) => (
-                <Search color={focused ? "red" : "$color"} />
+                <Search color={focused ? color : "$color"} />
               )
             }}
           />
@@ -151,7 +152,7 @@ function ThemeLayout({ settings }: { settings: SettingsModel }) {
               href: null,
               title: "Stats",
               tabBarIcon: ({ focused }) => (
-                <TrendingUp color={focused ? "red" : "$color"} />
+                <TrendingUp color={focused ? color : "$color"} />
               )
             }}
           />
@@ -160,7 +161,7 @@ function ThemeLayout({ settings }: { settings: SettingsModel }) {
             options={{
               title: "Settings",
               tabBarIcon: ({ focused }) => (
-                <Settings color={focused ? "red" : "$color"} />
+                <Settings color={focused ? color : "$color"} />
               )
             }}
           />

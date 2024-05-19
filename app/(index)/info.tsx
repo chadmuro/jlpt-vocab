@@ -28,8 +28,7 @@ export default function Info() {
         marginVertical={10}
       />
       <Text fontSize={16}>
-        {`The vocabulary list includes ${vocabulary.length} words for the JLPT ${title} exam. You will
-        study 20 new cards per day along with review cards.`}
+        {`The vocabulary list includes ${vocabulary.length} words for the JLPT ${title} exam. You will study 20 new cards per day along with review cards.`}
       </Text>
       <Text fontSize={16}>
         This application uses the supermemo spaced repetition algorithm.

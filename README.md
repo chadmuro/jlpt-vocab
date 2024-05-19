@@ -1,10 +1,6 @@
-# JLPT N2 Study
+# JLPT Vocabulary App
 
-[Download on the App Store](https://apps.apple.com/app/jlpt-n2-study/id6467766242)
-
-<p align="center">
-  <img src="./assets/icon.png" alt="Tamagui Icon"/>
-</p>
+N1, N2, N3, N4 apps coming soon to App Store and Google Play Store...
 
 ## Tech Stack
 

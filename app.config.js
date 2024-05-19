@@ -8,7 +8,13 @@ export default {
     scheme: "jlpt-app",
     userInterfaceStyle: "automatic",
     splash: {
-      backgroundColor: "#FF554E",
+      backgroundColor: IS_N2_APP
+        ? "#DC143C"
+        : IS_N3_APP
+        ? "#228B22"
+        : IS_N4_APP
+        ? "#FFD700"
+        : "#4169E1",
       image: "./assets/splash.png",
       resizeMode: "contain"
     },
