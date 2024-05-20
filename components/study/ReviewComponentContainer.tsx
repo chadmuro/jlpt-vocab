@@ -23,7 +23,7 @@ export default function ReviewComponentContainer({ reviews }: Props) {
     return (
       <Completed
         text="Review completed for the day"
-        link="/vocabulary"
+        link="/"
         buttonText="Go to home"
       />
     );

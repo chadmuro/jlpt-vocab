@@ -1,12 +1,12 @@
 import { Info } from "@tamagui/lucide-icons";
 import { Link, useRouter } from "expo-router";
-import { H2, XStack } from "tamagui";
+import { Button, Circle, H2, Text, View, XStack } from "tamagui";
 
 import { MyStack } from "../../components/MyStack";
 import { SafeAreaView } from "../../components/SafeAreaView";
-import TopButtons from "../../components/TopButtons";
 import { useSettings } from "../../contexts/settingsContext";
 import { useStudy } from "../../contexts/studyContext";
+import { color } from "../../data/level";
 
 export default function Home() {
   const { settings } = useSettings();
@@ -14,7 +14,12 @@ export default function Home() {
   const router = useRouter();
 
   const vocabularyIds = study ? JSON.parse(study.vocabularyIds) : [];
-  const totalVocabularyCount = vocabularyIds.length + reviewCards.length;
+  const totalStudyCards = vocabularyIds.length;
+  const totalReviewCards = reviewCards.length;
+
+  function handlePress(route: string) {
+    router.push(`/${route}`);
+  }
 
   return (
     <SafeAreaView
@@ -34,10 +39,50 @@ export default function Home() {
             <Info />
           </Link>
         </XStack>
-        <TopButtons
-          settings={settings}
-          totalVocabularyCount={totalVocabularyCount}
-        />
+        <View>
+          <Button
+            size="$6"
+            onPress={() => handlePress("study")}
+          >
+            Study
+          </Button>
+          {totalStudyCards > 0 && (
+            <Circle
+              position="absolute"
+              right={10}
+              top={10}
+              backgroundColor={color}
+              display="flex"
+              size="$4"
+              justifyContent="center"
+              alignContent="center"
+            >
+              <Text>{totalStudyCards}</Text>
+            </Circle>
+          )}
+        </View>
+        <View>
+          <Button
+            size="$6"
+            onPress={() => handlePress("review")}
+          >
+            Review
+          </Button>
+          {totalReviewCards > 0 && (
+            <Circle
+              position="absolute"
+              right={10}
+              top={10}
+              backgroundColor={color}
+              display="flex"
+              size="$4"
+              justifyContent="center"
+              alignContent="center"
+            >
+              <Text>{totalReviewCards}</Text>
+            </Circle>
+          )}
+        </View>
       </MyStack>
     </SafeAreaView>
   );
