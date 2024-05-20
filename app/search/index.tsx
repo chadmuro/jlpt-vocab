@@ -1,14 +1,30 @@
-import { useRouter } from "expo-router";
-import { Button, H2, XStack } from "tamagui";
+import { useState } from "react";
+import { FlatList, Pressable } from "react-native";
+import { Link } from "expo-router";
+import { H2, ListItem, Separator, XStack } from "tamagui";
 
+import TitleWithBack from "../../components/common/BackButtonTitle";
+import Search from "../../components/common/Search";
 import { MyStack } from "../../components/MyStack";
 import { SafeAreaView } from "../../components/SafeAreaView";
+import { vocabulary } from "../../data/level";
+import { formatJapanese } from "../../utils/formatJapanese";
 
-export default function Search() {
-  const router = useRouter();
+export default function Vocabulary() {
+  const [searchVocabulary, setSearchVocabulary] = useState(vocabulary);
+  const [search, setSearch] = useState("");
 
-  function handlePress(route: string) {
-    router.push(`/${route}`);
+  function handleSearch(text: string) {
+    setSearch(text);
+
+    const filteredVocabulary = vocabulary.filter((vocab) => {
+      const searchParam = `${vocab.kanji} ${formatJapanese(vocab.japanese)} ${
+        vocab.english
+      }`;
+      return searchParam.includes(text);
+    });
+
+    setSearchVocabulary(filteredVocabulary);
   }
 
   return (
@@ -18,14 +34,27 @@ export default function Search() {
           alignItems="center"
           justifyContent="space-between"
         >
-          <H2>Search</H2>
+          <H2>Vocabulary List</H2>
         </XStack>
-        <Button
-          size="$6"
-          onPress={() => handlePress("search/vocabulary_list")}
-        >
-          Vocabulary
-        </Button>
+        <Search
+          search={search}
+          handleSearch={handleSearch}
+        />
+        <FlatList
+          data={searchVocabulary}
+          renderItem={({ item }) => (
+            <Link
+              href={`/search/${item.id}`}
+              asChild
+            >
+              <Pressable>
+                <ListItem>{item.kanji}</ListItem>
+              </Pressable>
+            </Link>
+          )}
+          keyExtractor={(item) => String(item.id)}
+          ItemSeparatorComponent={() => <Separator />}
+        />
       </MyStack>
     </SafeAreaView>
   );

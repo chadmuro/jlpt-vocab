@@ -1,10 +1,10 @@
 import { useGlobalSearchParams } from "expo-router";
 
-import TitleWithBack from "../../../components/common/BackButtonTitle";
-import { MyStack } from "../../../components/MyStack";
-import { SafeAreaView } from "../../../components/SafeAreaView";
-import StudyCard from "../../../components/study/StudyCard";
-import { vocabulary } from "../../../data/level";
+import TitleWithBack from "../../components/common/BackButtonTitle";
+import { MyStack } from "../../components/MyStack";
+import { SafeAreaView } from "../../components/SafeAreaView";
+import StudyCard from "../../components/study/StudyCard";
+import { vocabulary } from "../../data/level";
 
 export default function Details() {
   const { id } = useGlobalSearchParams();
