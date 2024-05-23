@@ -13,6 +13,7 @@ export default function StudyButtons({ updateStudy, isUpdating }: Props) {
     <XStack justifyContent="space-between">
       <Button
         backgroundColor="$red10"
+        color="white"
         onPress={() => {
           updateStudy(0);
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -47,13 +48,14 @@ export default function StudyButtons({ updateStudy, isUpdating }: Props) {
       </Button>
       <Button
         backgroundColor="$green10"
+        color="white"
         onPress={() => {
           updateStudy(5);
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
         }}
         disabled={isUpdating}
         animation="bouncy"
-        pressStyle={{ scale: 0.925, backgroundColor: "$green3" }}
+        pressStyle={{ scale: 0.925, backgroundColor: "$green8" }}
       >
         Easy
       </Button>

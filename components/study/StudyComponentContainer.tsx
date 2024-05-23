@@ -30,7 +30,7 @@ function StudyComponentContainer({ study, isUpdating }: Props) {
     return (
       <Completed
         text="Study completed for the day"
-        link="/vocabulary/review"
+        link="/review"
         buttonText="Go to review"
       />
     );

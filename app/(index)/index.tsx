@@ -57,7 +57,7 @@ export default function Home() {
               justifyContent="center"
               alignContent="center"
             >
-              <Text>{totalStudyCards}</Text>
+              <Text color="white">{totalStudyCards}</Text>
             </Circle>
           )}
         </View>
@@ -79,7 +79,7 @@ export default function Home() {
               justifyContent="center"
               alignContent="center"
             >
-              <Text>{totalReviewCards}</Text>
+              <Text color="white">{totalReviewCards}</Text>
             </Circle>
           )}
         </View>

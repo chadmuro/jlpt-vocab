@@ -1,5 +1,5 @@
 import { Link } from "expo-router";
-import { Button, H4, Text, YStack } from "tamagui";
+import { Button, H3, H4, YStack } from "tamagui";
 
 interface Props {
   text: string;
@@ -10,8 +10,8 @@ interface Props {
 export default function Completed({ text, link, buttonText }: Props) {
   return (
     <YStack gap={10}>
-      <H4>Great job 💪</H4>
-      <Text>{text}</Text>
+      <H3>Great job 💪</H3>
+      <H4>{text}</H4>
       <Link
         href={link}
         asChild
