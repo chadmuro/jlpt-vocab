@@ -12,7 +12,7 @@ export default function Review() {
   return (
     <SafeAreaView>
       <MyStack>
-        <TitleWithBack title="Vocabulary Review" />
+        <TitleWithBack title="Review" />
         <Text>{reviewCards.length} cards remaining</Text>
         <ReviewComponent reviews={reviewCards} />
       </MyStack>

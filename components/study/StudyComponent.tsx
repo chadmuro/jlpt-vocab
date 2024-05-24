@@ -22,7 +22,10 @@ export default function StudyComponent({
   isUpdating
 }: Props) {
   return (
-    <View gap="$4">
+    <View
+      gap="$4"
+      flex={1}
+    >
       <StudyCard
         cardData={cardData}
         showAnswer={showAnswer}

@@ -24,7 +24,7 @@ export default function StudyCard({
       size="$4"
       bordered
       width="100%"
-      height={340}
+      flex={1}
       alignItems="center"
       onPress={() => (setShowAnswer ? setShowAnswer(!showAnswer) : null)}
     >

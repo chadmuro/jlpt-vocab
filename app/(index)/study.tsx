@@ -11,7 +11,7 @@ export default function Study() {
   return (
     <SafeAreaView>
       <MyStack>
-        <TitleWithBack title="Vocabulary Study" />
+        <TitleWithBack title="Study" />
         <StudyTitle
           study={study}
           text="cards remaining"
