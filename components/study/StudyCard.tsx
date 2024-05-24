@@ -11,12 +11,14 @@ interface Props {
   };
   showAnswer: boolean;
   setShowAnswer?: React.Dispatch<React.SetStateAction<boolean>>;
+  animation?: boolean;
 }
 
 export default function StudyCard({
   cardData,
   showAnswer,
-  setShowAnswer
+  setShowAnswer,
+  animation = true
 }: Props) {
   return (
     <Card
@@ -42,11 +44,13 @@ export default function StudyCard({
         />
         {showAnswer && (
           <View
-            enterStyle={{
-              opacity: 0,
-              y: 10,
-              scale: 0.9
-            }}
+            enterStyle={
+              animation && {
+                opacity: 0,
+                y: 10,
+                scale: 0.9
+              }
+            }
             animation="bouncy"
           >
             <H2>{formatJapanese(cardData.japanese)}</H2>

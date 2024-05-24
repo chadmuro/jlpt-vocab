@@ -19,6 +19,7 @@ export default function Details() {
           <StudyCard
             cardData={cardData}
             showAnswer={true}
+            animation={false}
           />
         )}
       </MyStack>

@@ -1,18 +1,10 @@
-export function formatJapanese(japanese: string) {
-  const splitJapanese = japanese.replace(" ", "").split("]");
+export function formatJapanese(input: string) {
+  // Remove kanji characters and the brackets
+  // eslint-disable-next-line no-control-regex
+  let result = input.replace(/[^\x00-\x7F]*\[(.*?)\]/g, "$1");
 
-  if (splitJapanese.length === 1) return japanese;
+  // Remove any extra spaces
+  result = result.replace(/\s+/g, "");
 
-  const removedKanjiArray = splitJapanese.map((part, index) => {
-    if (index === splitJapanese.length - 1) return part;
-
-    const separatorIndex = part.indexOf("[");
-
-    return part
-      .replace(" ", "")
-      .replace(part[separatorIndex - 1] + part[separatorIndex], "");
-  });
-
-  const formattedJapanese = removedKanjiArray.join("");
-  return formattedJapanese;
+  return result;
 }
