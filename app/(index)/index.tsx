@@ -45,21 +45,21 @@ export default function Home() {
             onPress={() => handlePress("study")}
           >
             Study
+            {totalStudyCards > 0 && (
+              <Circle
+                position="absolute"
+                right={10}
+                top={10}
+                backgroundColor={color}
+                display="flex"
+                size="$4"
+                justifyContent="center"
+                alignContent="center"
+              >
+                <Text color="white">{totalStudyCards}</Text>
+              </Circle>
+            )}
           </Button>
-          {totalStudyCards > 0 && (
-            <Circle
-              position="absolute"
-              right={10}
-              top={10}
-              backgroundColor={color}
-              display="flex"
-              size="$4"
-              justifyContent="center"
-              alignContent="center"
-            >
-              <Text color="white">{totalStudyCards}</Text>
-            </Circle>
-          )}
         </View>
         <View>
           <Button

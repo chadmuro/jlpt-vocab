@@ -13,12 +13,24 @@ export default {
         : IS_N3_APP
         ? "#228B22"
         : IS_N4_APP
-        ? "#FFD700"
+        ? "#DAA520"
         : "#4169E1",
-      image: "./assets/splash.png",
+      image: IS_N2_APP
+        ? "./assets/n2/splash.png"
+        : IS_N3_APP
+        ? "./assets/n3/splash.png"
+        : IS_N4_APP
+        ? "./assets/n4/splash.png"
+        : "./assets/n1/splash.png",
       resizeMode: "contain"
     },
-    icon: "./assets/icon.png",
+    icon: IS_N2_APP
+      ? "./assets/n2/icon.png"
+      : IS_N3_APP
+      ? "./assets/n3/icon.png"
+      : IS_N4_APP
+      ? "./assets/n4/icon.png"
+      : "./assets/n1/icon.png",
     name: IS_N2_APP
       ? "JLPT N2 Vocab"
       : IS_N3_APP

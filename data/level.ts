@@ -22,7 +22,7 @@ if (process.env.EXPO_PUBLIC_APP_VARIANT === "N3") {
 if (process.env.EXPO_PUBLIC_APP_VARIANT === "N4") {
   vocabulary = n4Vocabulary;
   title = "N4";
-  color = "#FFD700";
+  color = "#DAA520";
 }
 
 export { color, title, vocabulary };
