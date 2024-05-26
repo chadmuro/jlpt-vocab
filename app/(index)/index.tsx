@@ -1,6 +1,9 @@
+import { useCallback, useState } from "react";
+import { RefreshControl } from "react-native";
 import { Info } from "@tamagui/lucide-icons";
+import * as Haptics from "expo-haptics";
 import { Link, useRouter } from "expo-router";
-import { Button, Circle, H2, Text, View, XStack } from "tamagui";
+import { Button, Circle, H2, ScrollView, Text, View, XStack } from "tamagui";
 
 import { MyStack } from "../../components/MyStack";
 import { SafeAreaView } from "../../components/SafeAreaView";
@@ -10,8 +13,9 @@ import { color } from "../../data/level";
 
 export default function Home() {
   const { settings } = useSettings();
-  const { study, reviewCards } = useStudy();
+  const { study, reviewCards, getTodaysReview, getTodaysStudy } = useStudy();
   const router = useRouter();
+  const [refreshing, setRefreshing] = useState(false);
 
   const vocabularyIds = study ? JSON.parse(study.vocabularyIds) : [];
   const totalStudyCards = vocabularyIds.length;
@@ -20,6 +24,16 @@ export default function Home() {
   function handlePress(route: string) {
     router.push(`/${route}`);
   }
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+
+    await getTodaysStudy();
+    await getTodaysReview();
+
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    setRefreshing(false);
+  }, []);
 
   return (
     <SafeAreaView
@@ -39,13 +53,47 @@ export default function Home() {
             <Info />
           </Link>
         </XStack>
-        <View>
-          <Button
-            size="$6"
-            onPress={() => handlePress("study")}
-          >
-            Study
-            {totalStudyCards > 0 && (
+        <ScrollView
+          flex={1}
+          space="$true"
+          refreshControl={
+            <RefreshControl
+              tintColor={color}
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+            />
+          }
+        >
+          <View>
+            <Button
+              size="$6"
+              onPress={() => handlePress("study")}
+            >
+              Study
+              {totalStudyCards > 0 && (
+                <Circle
+                  position="absolute"
+                  right={10}
+                  top={10}
+                  backgroundColor={color}
+                  display="flex"
+                  size="$4"
+                  justifyContent="center"
+                  alignContent="center"
+                >
+                  <Text color="white">{totalStudyCards}</Text>
+                </Circle>
+              )}
+            </Button>
+          </View>
+          <View>
+            <Button
+              size="$6"
+              onPress={() => handlePress("review")}
+            >
+              Review
+            </Button>
+            {totalReviewCards > 0 && (
               <Circle
                 position="absolute"
                 right={10}
@@ -56,33 +104,11 @@ export default function Home() {
                 justifyContent="center"
                 alignContent="center"
               >
-                <Text color="white">{totalStudyCards}</Text>
+                <Text color="white">{totalReviewCards}</Text>
               </Circle>
             )}
-          </Button>
-        </View>
-        <View>
-          <Button
-            size="$6"
-            onPress={() => handlePress("review")}
-          >
-            Review
-          </Button>
-          {totalReviewCards > 0 && (
-            <Circle
-              position="absolute"
-              right={10}
-              top={10}
-              backgroundColor={color}
-              display="flex"
-              size="$4"
-              justifyContent="center"
-              alignContent="center"
-            >
-              <Text color="white">{totalReviewCards}</Text>
-            </Circle>
-          )}
-        </View>
+          </View>
+        </ScrollView>
       </MyStack>
     </SafeAreaView>
   );

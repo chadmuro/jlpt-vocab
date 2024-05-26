@@ -22,7 +22,7 @@ export default function Info() {
 
   return (
     <MyStack>
-      <H2 textAlign="center">{`Welcome to JLPT ${title} Vocabulary Study 🇯🇵`}</H2>
+      <H2 textAlign="center">{`Welcome to JLPT ${title} Vocabulary 🇯🇵`}</H2>
       <Separator
         alignSelf="stretch"
         marginVertical={10}
