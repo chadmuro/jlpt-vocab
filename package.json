@@ -2,7 +2,7 @@
   "name": "jlpt-vocab",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --reset-cache",
     "android": "expo run:android",
     "prebuild": "npx expo prebuild --clean --platform ios",
     "ios": "expo run:ios",
