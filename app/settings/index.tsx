@@ -4,11 +4,11 @@ import {
   ChevronRight,
   ClipboardCopy,
   Mail,
-  Pencil,
-  X
+  Pencil
 } from "@tamagui/lucide-icons";
 import * as Clipboard from "expo-clipboard";
 import * as Haptics from "expo-haptics";
+import * as MailComposer from "expo-mail-composer";
 import { H2, ListItem, Separator, YGroup } from "tamagui";
 
 import SettingsDialog from "../../components/Dialog";
@@ -17,18 +17,38 @@ import { SafeAreaView } from "../../components/SafeAreaView";
 import ThemeContent from "../../components/settings/ThemeContent";
 import ThemeItem from "../../components/settings/ThemeItem";
 import { useSettings } from "../../contexts/settingsContext";
+import { title } from "../../data/level";
 
 export default function Settings() {
   const { settings } = useSettings();
 
-  const copyToClipboard = async () => {
+  async function copyToClipboard() {
     await Clipboard.setStringAsync("chadmurodev@gmail.com");
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     Alert.alert(
       "Email copied to clipboard",
       "👋 Looking forward to hearing from you soon!"
     );
-  };
+  }
+
+  async function onContactPress() {
+    const isAvailable = await MailComposer.isAvailableAsync();
+    if (isAvailable) {
+      const mailResult = await MailComposer.composeAsync({
+        recipients: ["chadmurodev@gmail.com"],
+        subject: `JLPT ${title} Vocab`
+      });
+
+      if (mailResult.status === MailComposer.MailComposerStatus.SENT) {
+        Alert.alert(
+          "Thank you for your email!",
+          "🤙 We will get back to you as soon as possilble"
+        );
+      }
+    } else {
+      Linking.openURL("mailto:chadmurodev@gmail.com");
+    }
+  }
 
   return (
     <SafeAreaView>
@@ -60,6 +80,7 @@ export default function Settings() {
             />
           </YGroup.Item> */}
         </YGroup>
+
         <YGroup
           alignSelf="center"
           bordered
@@ -70,10 +91,10 @@ export default function Settings() {
             <ListItem
               hoverTheme
               pressTheme
-              title="Open default mail app"
+              title="Send an email"
               icon={Mail}
               iconAfter={ChevronRight}
-              onPress={() => Linking.openURL("mailto:chadmurodev@gmail.com")}
+              onPress={onContactPress}
             />
           </YGroup.Item>
           <YGroup.Item>
@@ -86,7 +107,7 @@ export default function Settings() {
               onPress={copyToClipboard}
             />
           </YGroup.Item>
-          <YGroup.Item>
+          {/* <YGroup.Item>
             <ListItem
               hoverTheme
               pressTheme
@@ -99,7 +120,7 @@ export default function Settings() {
                 )
               }
             />
-          </YGroup.Item>
+          </YGroup.Item> */}
         </YGroup>
       </MyStack>
     </SafeAreaView>
