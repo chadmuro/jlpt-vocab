@@ -16,15 +16,17 @@ interface Props {
 
 export default function ReviewComponentContainer({ reviews }: Props) {
   const [showAnswer, setShowAnswer] = useState(false);
-  const { updateReviewCard, updating } = useStudy();
+  const { study, updateReviewCard, updating } = useStudy();
   const { askReview } = useAskReview();
+
+  const ids: number[] = JSON.parse(study.vocabularyIds);
 
   if (reviews.length === 0) {
     return (
       <Completed
         text="Review completed for the day"
-        link="/"
-        buttonText="Go to home"
+        link={ids.length === 0 ? "/" : "/study"}
+        buttonText={ids.length === 0 ? "Go to home" : "Go to study"}
       />
     );
   }

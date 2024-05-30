@@ -20,7 +20,7 @@ interface Props {
 }
 
 function StudyComponentContainer({ study, isUpdating }: Props) {
-  const { updateStudyCard } = useStudy();
+  const { reviewCards, updateStudyCard } = useStudy();
   const [showAnswer, setShowAnswer] = useState(false);
 
   const ids: number[] = JSON.parse(study.vocabularyIds);
@@ -30,8 +30,8 @@ function StudyComponentContainer({ study, isUpdating }: Props) {
     return (
       <Completed
         text="Study completed for the day"
-        link="/review"
-        buttonText="Go to review"
+        link={reviewCards.length === 0 ? "/" : "/review"}
+        buttonText={reviewCards.length === 0 ? "Go to home" : "Go to review"}
       />
     );
   }
