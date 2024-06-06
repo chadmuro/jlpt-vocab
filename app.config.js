@@ -62,7 +62,7 @@ export default {
         : IS_N4_APP
         ? "com.chadmuro.jlptvocab.n4"
         : "com.chadmuro.jlptvocab.n1",
-      buildNumber: "5",
+      buildNumber: "6",
       supportsTablet: false,
       privacyManifests: {
         NSPrivacyAccessedAPITypes: [

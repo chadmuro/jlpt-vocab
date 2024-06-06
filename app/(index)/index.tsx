@@ -92,21 +92,21 @@ export default function Home() {
               onPress={() => handlePress("review")}
             >
               Review
+              {totalReviewCards > 0 && (
+                <Circle
+                  position="absolute"
+                  right={10}
+                  top={10}
+                  backgroundColor={color}
+                  display="flex"
+                  size="$4"
+                  justifyContent="center"
+                  alignContent="center"
+                >
+                  <Text color="white">{totalReviewCards}</Text>
+                </Circle>
+              )}
             </Button>
-            {totalReviewCards > 0 && (
-              <Circle
-                position="absolute"
-                right={10}
-                top={10}
-                backgroundColor={color}
-                display="flex"
-                size="$4"
-                justifyContent="center"
-                alignContent="center"
-              >
-                <Text color="white">{totalReviewCards}</Text>
-              </Circle>
-            )}
           </View>
         </ScrollView>
       </MyStack>
