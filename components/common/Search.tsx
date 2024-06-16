@@ -1,6 +1,6 @@
 import { Pressable } from "react-native";
 import { X } from "@tamagui/lucide-icons";
-import { Input, View } from "tamagui";
+import { Input, useTheme, View } from "tamagui";
 
 interface Props {
   search: string;
@@ -8,6 +8,8 @@ interface Props {
 }
 
 export default function Search({ search, handleSearch }: Props) {
+  const theme = useTheme();
+
   return (
     <View position="relative">
       <Input
@@ -24,7 +26,7 @@ export default function Search({ search, handleSearch }: Props) {
           onPress={() => handleSearch("")}
           style={{ position: "absolute", top: 10, right: 10 }}
         >
-          <X color="white" />
+          <X color={theme.color.get()} />
         </Pressable>
       )}
     </View>

@@ -39,7 +39,7 @@ export default {
       ? "JLPT N4 Vocab"
       : "JLPT N1 Vocab",
     slug: "jlpt-vocab",
-    version: "1.0.0",
+    version: "1.0.1",
     plugins: [
       "expo-router",
       "expo-build-properties",
@@ -62,7 +62,7 @@ export default {
         : IS_N4_APP
         ? "com.chadmuro.jlptvocab.n4"
         : "com.chadmuro.jlptvocab.n1",
-      buildNumber: "6",
+      buildNumber: "1",
       supportsTablet: false,
       privacyManifests: {
         NSPrivacyAccessedAPITypes: [

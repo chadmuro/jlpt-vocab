@@ -17,7 +17,7 @@ import { SafeAreaView } from "../../components/SafeAreaView";
 import ThemeContent from "../../components/settings/ThemeContent";
 import ThemeItem from "../../components/settings/ThemeItem";
 import { useSettings } from "../../contexts/settingsContext";
-import { title } from "../../data/level";
+import { reviewLink, title } from "../../data/level";
 
 export default function Settings() {
   const { settings } = useSettings();
@@ -107,20 +107,16 @@ export default function Settings() {
               onPress={copyToClipboard}
             />
           </YGroup.Item>
-          {/* <YGroup.Item>
+          <YGroup.Item>
             <ListItem
               hoverTheme
               pressTheme
               title="Write a review"
               icon={Pencil}
               iconAfter={ChevronRight}
-              onPress={() =>
-                Linking.openURL(
-                  `itms-apps://itunes.apple.com/app/viewContentsUserReviews/id6467766242?action=write-review`
-                )
-              }
+              onPress={() => Linking.openURL(reviewLink)}
             />
-          </YGroup.Item> */}
+          </YGroup.Item>
         </YGroup>
       </MyStack>
     </SafeAreaView>

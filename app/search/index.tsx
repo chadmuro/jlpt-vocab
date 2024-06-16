@@ -3,7 +3,6 @@ import { FlatList, Pressable } from "react-native";
 import { Link } from "expo-router";
 import { H2, ListItem, Separator, XStack } from "tamagui";
 
-import TitleWithBack from "../../components/common/BackButtonTitle";
 import Search from "../../components/common/Search";
 import { MyStack } from "../../components/MyStack";
 import { SafeAreaView } from "../../components/SafeAreaView";
